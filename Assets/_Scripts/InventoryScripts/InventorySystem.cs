@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -73,5 +74,50 @@ public class InventorySystem
     {
         _freeSlot = InventorySlots.FirstOrDefault(i => i.ItemData == null);
         return _freeSlot == null ? false : true;
+    }
+
+    internal Dictionary<InventoryItemData, int> GetAllItemsHeld()
+    {
+        var _distinctItems = new Dictionary<InventoryItemData, int>();
+
+        foreach (var _item in inventorySlots)
+        {
+            if (_item.ItemData == null) continue;
+
+            if (!_distinctItems.ContainsKey(_item.ItemData))
+                _distinctItems.Add(_item.ItemData, _item.StackSize);
+            else
+                _distinctItems[_item.ItemData] += _item.StackSize;
+        }
+
+        return _distinctItems;
+    }
+
+    internal void AddCoinsFromShop(int _price)
+    {
+        PlayerController.instance.coins += _price;
+    }
+
+    internal void RemoveItemsFromInventory(InventoryItemData _data, int _amount)
+    {
+        if (ContainsItem(_data, out List<InventorySlot> _invSlot))
+        {
+            foreach (var _slot in _invSlot)
+            {
+                var _stackSize = _slot.StackSize;
+
+                if (_stackSize > _amount)
+                {
+                    _slot.RemoveFromStack(_amount);
+                }
+                else
+                {
+                    _slot.RemoveFromStack(_stackSize);
+                    _amount -= _stackSize;
+                }
+
+                OnInventorySlotChanged?.Invoke(_slot);
+            }
+        }
     }
 }

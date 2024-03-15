@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     private void DisplayShopWindow(ShopSystem _shopSystem, PlayerInventoryHolder _playerInventory)
     {
         shopKeeperDisplay.gameObject.SetActive(!shopKeeperDisplay.gameObject.activeSelf);
-        PlayerController.instance.GetComponent<CharacterController>().enabled = (!shopKeeperDisplay.gameObject.activeSelf);
+        PlayerController.instance.GetComponent<MovementController>().MovementAbility(!shopKeeperDisplay.gameObject.activeSelf);
         LockCursor(!shopKeeperDisplay.gameObject.activeSelf);
         shopKeeperDisplay.DisplayShopWindow(_shopSystem, _playerInventory);
     }

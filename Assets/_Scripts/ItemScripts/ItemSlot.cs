@@ -56,6 +56,13 @@ public abstract class ItemSlot
 
     public void AddToStack(int _amount) => stackSize += _amount;
 
-    public void RemoveFromStack(int _amount) => stackSize -= _amount;
+    public void RemoveFromStack(int _amount)
+    {
+        stackSize -= _amount;
 
+        if (stackSize <= 0)
+        {
+            ClearSlot();
+        }
+    }
 }

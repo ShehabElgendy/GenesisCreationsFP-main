@@ -15,7 +15,7 @@ public class UIStaticInventoryDisplay : UIInventoryDisplay
     {
         if (inventoryHolder != null)
         {
-            inventorySystem = inventoryHolder.PrimaryInventorySystem;
+            inventorySystem = inventoryHolder.PlayerInventorySystem;
             inventorySystem.OnInventorySlotChanged += UpdateSlot;
         }
         else

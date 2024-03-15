@@ -34,6 +34,7 @@ public class ShopSystem
         if (ContainsItem(_data, out ShopSlot _shopSlot))
         {
             _shopSlot.AddToStack(_amount);
+            return;
         }
 
         var _freeSlot = GetFreeSlot();
@@ -65,5 +66,10 @@ public class ShopSystem
         if (!ContainsItem(_data, out ShopSlot _shopSlot)) return;
 
         _shopSlot.RemoveFromStack(_amount);
+    }
+
+    internal void SellItem(InventoryItemData _kvpKey, int _kvpValue, int _price)
+    {
+        AddToShop(_kvpKey, _kvpValue);
     }
 }

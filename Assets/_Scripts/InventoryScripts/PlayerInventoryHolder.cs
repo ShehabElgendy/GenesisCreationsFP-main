@@ -7,11 +7,11 @@ public class PlayerInventoryHolder : InventoryHolder
 {
     internal bool CheckInventoryRemaining(Dictionary<InventoryItemData, int> _shoppingCart)
     {
-        var _clonedSystem = new InventorySystem(primaryInventorySystem.InventorySize);
+        var _clonedSystem = new InventorySystem(playerInventorySystem.InventorySize);
 
-        for (int i = 0; i < primaryInventorySystem.InventorySize; i++)
+        for (int i = 0; i < playerInventorySystem.InventorySize; i++)
         {
-            _clonedSystem.InventorySlots[i].AssignItem(primaryInventorySystem.InventorySlots[i].ItemData, primaryInventorySystem.InventorySlots[i].StackSize);
+            _clonedSystem.InventorySlots[i].AssignItem(playerInventorySystem.InventorySlots[i].ItemData, playerInventorySystem.InventorySlots[i].StackSize);
         }
 
         foreach (var _kvp in _shoppingCart)
@@ -27,7 +27,7 @@ public class PlayerInventoryHolder : InventoryHolder
 
     public bool AddToInventory(InventoryItemData _data, int _amount)
     {
-        if(primaryInventorySystem.AddToInventory(_data, _amount)) return true;
+        if(playerInventorySystem.AddToInventory(_data, _amount)) return true;
 
         return false;
     }

@@ -55,7 +55,7 @@ public class MovementController : MonoBehaviour
     private void Movement()
     {
         characterController.SimpleMove(moveDirection * Time.deltaTime);
-       // if (canMove)
+        if (canMove)
         {
             rotationX += -Input.GetAxis(GameStatics.Mouse_Y) * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
@@ -64,9 +64,11 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    public void MovementAbility(bool _canMove)
+    public bool MovementAbility(bool _canMove)
     {
         canMove = _canMove;
         characterController.enabled = canMove;
+
+        return _canMove;
     }
 }

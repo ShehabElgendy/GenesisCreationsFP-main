@@ -20,7 +20,7 @@ public class ItemPickUp : MonoBehaviour
 
        if(!_inventory) return;
 
-       if (_inventory.PrimaryInventorySystem.AddToInventory(ItemData, 1))
+       if (_inventory.PlayerInventorySystem.AddToInventory(ItemData, 1))
         {
             Destroy(gameObject);
         }

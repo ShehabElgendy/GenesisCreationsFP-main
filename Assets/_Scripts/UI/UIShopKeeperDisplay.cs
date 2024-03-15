@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -86,13 +84,17 @@ public class UIShopKeeperDisplay : MonoBehaviour
         }
 
         ClearSlots();
+        ClearItemPreview();
 
         basketTotalTxt.enabled = false;
         buyButton.gameObject.SetActive(false);
         basketTotal = 0;
         playerCoinsTxt.text = $"Coins: {PlayerController.instance.coins}";
 
-        DisplayShopInventory();
+        if (isSelling) 
+            DisplayPlayerInventory();
+        else 
+            DisplayShopInventory();
     }
 
     private void BuyItems()
@@ -107,7 +109,7 @@ public class UIShopKeeperDisplay : MonoBehaviour
 
             for (int i = 0; i < _kvp.Value; i++)
             {
-                playerInventoryHolder.PrimaryInventorySystem.AddToInventory(_kvp.Key, 1); //need check
+                playerInventoryHolder.PlayerInventorySystem.AddToInventory(_kvp.Key, 1); //need check
             }
         }
 
@@ -123,7 +125,18 @@ public class UIShopKeeperDisplay : MonoBehaviour
 
     private void SellItems()
     {
+        foreach (var _kvp in shoppingCart)
+        {
 
+            var _price = GetModifiedPrice(_kvp.Key, _kvp.Value);
+
+            shopSystem.SellItem(_kvp.Key, _kvp.Value, _price);
+
+            playerInventoryHolder.PlayerInventorySystem.AddCoinsFromShop(_price);
+            playerInventoryHolder.PlayerInventorySystem.RemoveItemsFromInventory(_kvp.Key, _kvp.Value);
+        }
+
+        RefreshDisplay();
     }
 
     private void ClearSlots()
@@ -155,7 +168,14 @@ public class UIShopKeeperDisplay : MonoBehaviour
 
     private void DisplayPlayerInventory()
     {
+        foreach (var _item in playerInventoryHolder.PlayerInventorySystem.GetAllItemsHeld())
+        {
+            var _tempSlot = new ShopSlot();
+            _tempSlot.AssignItem(_item.Key, _item.Value);
 
+            var _shopSlot = Instantiate(shopSlotPrefab, itemListContentPanel.transform);
+            _shopSlot.Init(_tempSlot);
+        }
     }
 
     public void RemoveItemfromCart(UIShopSlot _uIShopSlot)
@@ -199,7 +219,9 @@ public class UIShopKeeperDisplay : MonoBehaviour
 
     private void ClearItemPreview()
     {
-
+        itemPreviewSprite.sprite = null;
+        itemPreviewSprite.color = Color.clear;
+        itemPreviewNameTxt.text = string.Empty;
     }
 
     internal void AddItemToCart(UIShopSlot _uIShopSlot)
@@ -255,8 +277,25 @@ public class UIShopKeeperDisplay : MonoBehaviour
         return _data.Price * _amount;
     }
 
-    private void UpdateItemPreview(UIShopSlot _uIShopSlot)
+    private void UpdateItemPreview(UIShopSlot _uIShopSlot) //need to remove
     {
+        var _data = _uIShopSlot.AssignedItemSlot.ItemData;
 
+        itemPreviewSprite.sprite = _data.Icon;
+        itemPreviewSprite.color = Color.white;
+        itemPreviewNameTxt.text = _data.DisplayName;
+    }
+
+    public void OnBuyTabPressed()
+    {
+        isSelling = false;
+        RefreshDisplay();
+    }
+
+    public void OnSellTabPressed()
+    {
+        isSelling = true;
+        RefreshDisplay();
     }
 }
+
