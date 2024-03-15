@@ -38,12 +38,12 @@ public class MovementController : MonoBehaviour
     {
         if(canMove)
         {
-            Vector3 forward = transform.TransformDirection(Vector3.forward);
-            Vector3 right = transform.TransformDirection(Vector3.right);
+            Vector3 _forward = transform.TransformDirection(Vector3.forward);
+            Vector3 _right = transform.TransformDirection(Vector3.right);
 
-            float curSpeedX = moveSpeed * Input.GetAxis(GameStatics.VerticalMovement);
-            float curSpeedY = moveSpeed * Input.GetAxis(GameStatics.HorizontalMovement);
-            moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+            float _curSpeedX = moveSpeed * Input.GetAxis(GameStatics.VerticalMovement);
+            float _curSpeedY = moveSpeed * Input.GetAxis(GameStatics.HorizontalMovement);
+            moveDirection = (_forward * _curSpeedX) + (_right * _curSpeedY);
         }
     }
 

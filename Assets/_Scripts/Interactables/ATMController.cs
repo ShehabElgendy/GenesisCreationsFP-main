@@ -38,9 +38,9 @@ public class ATMController : MonoBehaviour
         }
         else
         {
-            int remainingCredit = PlayerController.instance.Coins - PlayerController.instance.Coins;
+            int _remainingCredit = PlayerController.instance.Coins - PlayerController.instance.Coins;
             Credit += PlayerController.instance.Coins; ;
-            PlayerController.instance.Coins = remainingCredit;
+            PlayerController.instance.Coins = _remainingCredit;
         }
 
 
@@ -55,9 +55,9 @@ public class ATMController : MonoBehaviour
         }
         else
         {
-            int remainingCredit = Credit;
-            Credit -= remainingCredit;
-            PlayerController.instance.Coins += remainingCredit;
+            int _remainingCredit = Credit;
+            Credit -= _remainingCredit;
+            PlayerController.instance.Coins += _remainingCredit;
 
         }
     }
