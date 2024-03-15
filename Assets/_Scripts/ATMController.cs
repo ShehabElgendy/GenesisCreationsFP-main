@@ -15,11 +15,12 @@ public class ATMController : MonoBehaviour
     [SerializeField]
     private int credit;
 
+    private int creditValue = 3000;
+
 
     private void Start()
     {
-        PlayerPrefs.SetInt("Credit", 3000);
-        credit = PlayerPrefs.GetInt("Credit");
+        credit = creditValue;
 
         creditTxt.text = credit.ToString();
     }
@@ -31,16 +32,16 @@ public class ATMController : MonoBehaviour
 
     public void Deposit()
     {
-        if (PlayerController.instance.coins > depositAmount)
+        if (PlayerController.instance.Coins > depositAmount)
         {
             credit += depositAmount;
-            PlayerController.instance.coins -= depositAmount;
+            PlayerController.instance.Coins -= depositAmount;
         }
         else
         {
-            int remainingCredit = PlayerController.instance.coins - PlayerController.instance.coins;
-            credit += PlayerController.instance.coins; ;
-            PlayerController.instance.coins = remainingCredit;
+            int remainingCredit = PlayerController.instance.Coins - PlayerController.instance.Coins;
+            credit += PlayerController.instance.Coins; ;
+            PlayerController.instance.Coins = remainingCredit;
         }
 
 
@@ -51,13 +52,13 @@ public class ATMController : MonoBehaviour
         if (credit > withdrawtAmount)
         {
             credit -= depositAmount;
-            PlayerController.instance.coins += withdrawtAmount;
+            PlayerController.instance.Coins += withdrawtAmount;
         }
         else
         {
             int remainingCredit = credit;
             credit -= remainingCredit;
-            PlayerController.instance.coins += remainingCredit;
+            PlayerController.instance.Coins += remainingCredit;
 
         }
     }

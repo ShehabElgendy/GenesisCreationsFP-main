@@ -8,9 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bedInteraction;
 
-    private MovementController movement;
-
-    public int coins;
+    public int Coins;
 
 
     private void Awake()
@@ -19,35 +17,33 @@ public class PlayerController : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
-
-        movement = GetComponent<MovementController>();
     }
 
     private void Start()
     {
         PlayerPrefs.SetInt(GameStatics.Coins, 1000);
-        coins = PlayerPrefs.GetInt(GameStatics.Coins);
+        Coins = PlayerPrefs.GetInt(GameStatics.Coins);
     }
-    public void Sleep()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && bedInteraction.gameObject.activeSelf)
-        {
-            movement.MovementAbility(false);
-            bedInteraction.gameObject.SetActive(false);
-            AnimatorController.instance.FadeIn();
-            StartCoroutine(WaitForFade());
-        }
-    }
+    //public void Sleep()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.E) && bedInteraction.gameObject.activeSelf)
+    //    {
+    //        movement.MovementAbility(false);
+    //        bedInteraction.gameObject.SetActive(false);
+    //        AnimatorController.instance.FadeIn();
+    //        StartCoroutine(WaitForFade());
+    //    }
+    //}
 
-    IEnumerator WaitForFade()
-    {
-        yield return new WaitForSeconds(6f);
-        coins += coins * 10 / 100;
-        if (coins == 0)
-        {
-            coins += 100;
-        }
-        bedInteraction.SetActive(true);
-        movement.MovementAbility(true);
-    }
+    //IEnumerator WaitForFade()
+    //{
+    //    yield return new WaitForSeconds(6f);
+    //    Coins += Coins * 10 / 100;
+    //    if (Coins == 0)
+    //    {
+    //        Coins += 100;
+    //    }
+    //    bedInteraction.SetActive(true);
+    //    movement.MovementAbility(true);
+    //}
 }

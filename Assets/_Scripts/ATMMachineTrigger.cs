@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider))]
-public class ShopTrigger : MonoBehaviour
+public class ATMMachineTrigger : MonoBehaviour
 {
     [SerializeField]
-    private GameObject ShopBG;
+    private GameObject ATMMachBG;
 
     private void OnTriggerEnter(Collider _other)
     {
         if (_other.GetComponent<Interactor>())
         {
-            ShopBG.SetActive(true);
+            ATMMachBG.SetActive(true);
         }
     }
 
@@ -20,7 +19,7 @@ public class ShopTrigger : MonoBehaviour
     {
         if (_other.GetComponent<Interactor>())
         {
-            ShopBG.SetActive(false);
+            ATMMachBG.SetActive(false);
         }
     }
 }

@@ -1,13 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
-    public Transform InteractionPoint;
+    [SerializeField]
+    private Transform InteractionPoint;
+
+    [SerializeField]
     public LayerMask InteractionLayer;
+
+    [SerializeField]
     public float InteractionPointRadius = 1f;
-    public bool isInteracting {  get; private set; }
+
+    public bool isInteracting { get; private set; }
 
     private void Update()
     {

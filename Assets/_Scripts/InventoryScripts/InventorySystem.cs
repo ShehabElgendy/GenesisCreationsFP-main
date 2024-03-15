@@ -23,7 +23,7 @@ public class InventorySystem
 
     public InventorySystem(int _size, int _coins)
     {
-        _coins = PlayerController.instance.coins;
+        _coins = PlayerController.instance.Coins;
     }
 
     private void CreateInventory(int _size)
@@ -95,7 +95,7 @@ public class InventorySystem
 
     internal void AddCoinsFromShop(int _price)
     {
-        PlayerController.instance.coins += _price;
+        PlayerController.instance.Coins += _price;
     }
 
     internal void RemoveItemsFromInventory(InventoryItemData _data, int _amount)

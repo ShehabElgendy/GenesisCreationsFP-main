@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 public abstract class UIInventoryDisplay : MonoBehaviour
 {
-    [SerializeField]
-    MouseItemData mouseInventoryItem;
-
     protected InventorySystem inventorySystem;
 
     protected Dictionary<UIInventorySlot, InventorySlot> slotDictionary;

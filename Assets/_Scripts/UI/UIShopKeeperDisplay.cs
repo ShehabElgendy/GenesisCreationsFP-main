@@ -89,17 +89,17 @@ public class UIShopKeeperDisplay : MonoBehaviour
         basketTotalTxt.enabled = false;
         buyButton.gameObject.SetActive(false);
         basketTotal = 0;
-        playerCoinsTxt.text = $"Coins: {PlayerController.instance.coins}";
+        playerCoinsTxt.text = $"Coins: {PlayerController.instance.Coins}";
 
-        if (isSelling) 
+        if (isSelling)
             DisplayPlayerInventory();
-        else 
+        else
             DisplayShopInventory();
     }
 
     private void BuyItems()
     {
-        if (PlayerController.instance.coins < basketTotal) return;
+        if (PlayerController.instance.Coins < basketTotal) return;
 
         if (!playerInventoryHolder.CheckInventoryRemaining(shoppingCart)) return;
 
@@ -113,14 +113,14 @@ public class UIShopKeeperDisplay : MonoBehaviour
             }
         }
 
-        SpendCoins(PlayerController.instance.coins);
+        SpendCoins(PlayerController.instance.Coins);
 
         RefreshDisplay();
     }
 
     private void SpendCoins(int _value)
     {
-        _value = PlayerController.instance.coins -= basketTotal;
+        _value = PlayerController.instance.Coins -= basketTotal;
     }
 
     private void SellItems()
@@ -262,9 +262,10 @@ public class UIShopKeeperDisplay : MonoBehaviour
 
     private void CheckCartVsAvailableCoins()
     {
-        var _coinsToCheck = PlayerController.instance.coins;
+        var _coinsToCheck = PlayerController.instance.Coins;
 
-        basketTotalTxt.color = basketTotal > _coinsToCheck ? Color.red : Color.white;
+        if (!isSelling)
+            basketTotalTxt.color = basketTotal > _coinsToCheck ? Color.red : Color.white;
 
         if (isSelling || playerInventoryHolder.CheckInventoryRemaining(shoppingCart)) return;
 

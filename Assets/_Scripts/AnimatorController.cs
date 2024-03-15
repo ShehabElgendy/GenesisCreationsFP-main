@@ -6,8 +6,6 @@ public class AnimatorController : MonoBehaviour
 {
     public static AnimatorController instance;
 
-    [SerializeField]
-    private GameObject bedInteraction;
 
     private Animator anim;
 
