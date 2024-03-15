@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
 
     private MovementController movement;
 
+    private ATMController aTMController;
+
     private void Awake()
     {
         if (instance == null)
@@ -27,6 +29,7 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
 
         movement = FindObjectOfType<MovementController>();
+        aTMController = FindObjectOfType<ATMController>();
     }
 
     private void OnEnable()
@@ -50,11 +53,10 @@ public class UIManager : MonoBehaviour
     IEnumerator WaitForFade()
     {
         yield return new WaitForSeconds(6f);
-        PlayerController.instance.Coins += PlayerController.instance.Coins * 10 / 100;
-        if (PlayerController.instance.Coins == 0)
-        {
-            PlayerController.instance.Coins += 100;
-        }
+        aTMController.Credit += aTMController.Credit * 10 / 100;
+        if (aTMController.Credit == 0)
+            aTMController.Credit += 100;
+
         FindObjectOfType<BedInteraction>().GetComponent<BoxCollider>().enabled = true;
         movement.MovementAbility(true);
     }

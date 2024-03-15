@@ -279,7 +279,7 @@ public class UIShopKeeperDisplay : MonoBehaviour
         return _data.Price * _amount;
     }
 
-    private void UpdateItemPreview(UIShopSlot _uIShopSlot) //need to remove
+    private void UpdateItemPreview(UIShopSlot _uIShopSlot)
     {
         var _data = _uIShopSlot.AssignedItemSlot.ItemData;
 

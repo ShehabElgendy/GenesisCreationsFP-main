@@ -11,8 +11,6 @@ public class Interactor : MonoBehaviour
     [SerializeField]
     public float InteractionPointRadius = 1f;
 
-    public bool isInteracting { get; private set; }
-
     private void Update()
     {
         var _colliders = Physics.OverlapSphere(InteractionPoint.position, InteractionPointRadius, InteractionLayer);
@@ -34,11 +32,5 @@ public class Interactor : MonoBehaviour
     private void StartInteraction(IInteractable _interactables)
     {
         _interactables.Interact(this, out bool _interactSuccessful);
-        isInteracting = true;
-    }
-
-    private void EndInteraction()
-    {
-        isInteracting = false;
     }
 }

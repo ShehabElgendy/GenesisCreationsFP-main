@@ -41,12 +41,4 @@ public class ShopKeeper : MonoBehaviour, IInteractable
             Debug.LogError("Player Inventory not Found");
         }
     }
-
-
-    public void EndInteraction()
-    {
-
-    }
-
-
 }

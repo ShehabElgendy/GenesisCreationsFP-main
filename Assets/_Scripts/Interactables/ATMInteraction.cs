@@ -23,10 +23,4 @@ public class ATMInteraction : MonoBehaviour, IInteractable
             _interactionSuccefull = false;
         }
     }
-
-    public void EndInteraction()
-    {
-
-    }
-
 }

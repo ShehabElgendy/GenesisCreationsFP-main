@@ -14,7 +14,7 @@ public class UIStaticInventoryDisplay : UIInventoryDisplay
         var _component = FindObjectOfType<PlayerInventoryHolder>();
         Destroy(_component);
 
-        var _invHolder = GameObject.Find("Player").AddComponent<PlayerInventoryHolder>();
+        var _invHolder = GameObject.Find(GameStatics.PlayeTag).AddComponent<PlayerInventoryHolder>();
 
         inventoryHolder = _invHolder;
 

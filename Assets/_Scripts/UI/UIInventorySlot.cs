@@ -26,9 +26,6 @@ public class UIInventorySlot : MonoBehaviour
         itemSprite.color = Color.clear;
         itemCount.text = string.Empty;
 
-        button = GetComponent<Button>();
-        button?.onClick.AddListener(OnUISlotClick);
-
         ParentDisplay = transform.parent.GetComponent<UIInventoryDisplay>();
     }
 
@@ -71,9 +68,4 @@ public class UIInventorySlot : MonoBehaviour
         itemSprite.color = Color.clear;
         itemCount.text = string.Empty;
     }
-    public void OnUISlotClick()
-    {
-        ParentDisplay?.SlotClicked(this);
-    }
-
 }

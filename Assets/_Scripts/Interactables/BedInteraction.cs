@@ -22,9 +22,4 @@ public class BedInteraction : MonoBehaviour, IInteractable
             _interactionSuccefull = false;
         }
     }
-    public void EndInteraction()
-    {
-
-    }
-
 }
