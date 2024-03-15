@@ -28389,7 +28389,8 @@ MonoBehaviour:
   m_text: Press E to Exit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90018d9440a5982409bab5070d8f520d, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -5806111188292466620, guid: 90018d9440a5982409bab5070d8f520d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -36493,7 +36494,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7302344309260982179}
         m_TargetAssemblyTypeName: ATMController, Assembly-CSharp
         m_MethodName: WithDraw
         m_Mode: 1
@@ -37613,7 +37614,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7302344309260982179}
         m_TargetAssemblyTypeName: ATMController, Assembly-CSharp
         m_MethodName: Deposit
         m_Mode: 1
