@@ -87,6 +87,7 @@ public class UIShopKeeperDisplay : MonoBehaviour
         ClearItemPreview();
 
         basketTotalTxt.enabled = false;
+        basketTotalTxt.color = Color.white;
         buyButton.gameObject.SetActive(false);
         basketTotal = 0;
         playerCoinsTxt.text = $"Coins: {PlayerController.instance.Coins}";
@@ -109,7 +110,7 @@ public class UIShopKeeperDisplay : MonoBehaviour
 
             for (int i = 0; i < _kvp.Value; i++)
             {
-                playerInventoryHolder.PlayerInventorySystem.AddToInventory(_kvp.Key, 1); //need check
+                playerInventoryHolder.PlayerInventorySystem.AddToInventory(_kvp.Key, 1);
             }
         }
 

@@ -7,11 +7,10 @@ using UnityEngine.Events;
 public class InventoryHolder : MonoBehaviour
 {
     [SerializeField]
-    private int inventorySize;
+    private int inventorySize = 5;
 
     [SerializeField]
     protected InventorySystem playerInventorySystem;
-
     public InventorySystem PlayerInventorySystem => playerInventorySystem;
 
     public static UnityAction<InventorySystem> OnDynamicInventoryDisplayRequested;

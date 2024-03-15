@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class UIStaticInventoryDisplay : UIInventoryDisplay
@@ -13,6 +11,14 @@ public class UIStaticInventoryDisplay : UIInventoryDisplay
 
     private void Awake()
     {
+        var _component = FindObjectOfType<PlayerInventoryHolder>();
+        Destroy(_component);
+
+        var _invHolder = GameObject.Find("Player").AddComponent<PlayerInventoryHolder>();
+
+        inventoryHolder = _invHolder;
+
+
         if (inventoryHolder != null)
         {
             inventorySystem = inventoryHolder.PlayerInventorySystem;

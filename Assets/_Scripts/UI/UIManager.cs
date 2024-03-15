@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -33,6 +34,10 @@ public class UIManager : MonoBehaviour
         ShopKeeper.OnShopWindowRequested += DisplayShopWindow;
         ATMInteraction.OnATMWindowRequested += DisplayATMWindow;
         BedInteraction.OnBedInteractionRequested += BedInteractionSleep;
+    }
+    void Start()
+    {
+        coinsTxt.text = PlayerController.instance.Coins.ToString();
     }
 
     private void BedInteractionSleep(PlayerController arg0)
@@ -77,10 +82,6 @@ public class UIManager : MonoBehaviour
         BedInteraction.OnBedInteractionRequested -= BedInteractionSleep;
     }
 
-    void Start()
-    {
-        coinsTxt.text = PlayerController.instance.Coins.ToString();
-    }
 
     private void Update()
     {

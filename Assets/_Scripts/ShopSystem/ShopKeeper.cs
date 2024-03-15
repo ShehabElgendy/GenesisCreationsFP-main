@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(UniqueID))]
 public class ShopKeeper : MonoBehaviour, IInteractable
 {
     [SerializeField]

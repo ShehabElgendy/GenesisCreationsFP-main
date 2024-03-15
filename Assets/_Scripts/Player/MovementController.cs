@@ -54,9 +54,9 @@ public class MovementController : MonoBehaviour
 
     private void Movement()
     {
-        characterController.SimpleMove(moveDirection * Time.deltaTime);
         if (canMove)
         {
+            characterController.SimpleMove(moveDirection * Time.deltaTime);
             rotationX += -Input.GetAxis(GameStatics.Mouse_Y) * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
