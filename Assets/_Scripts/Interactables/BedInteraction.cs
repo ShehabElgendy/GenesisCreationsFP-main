@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class BedInteraction : MonoBehaviour, IInteractable
 {
-    public UnityAction<IInteractable> OnInteractionComplete { get; set; }
-
     public static UnityAction<PlayerController> OnBedInteractionRequested { get; set; }
     public void Interact(Interactor _interactor, out bool _interactionSuccefull)
     {

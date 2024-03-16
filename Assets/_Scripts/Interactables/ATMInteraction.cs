@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class ATMInteraction : MonoBehaviour, IInteractable
 {
-    public UnityAction<IInteractable> OnInteractionComplete { get; set; }
-
     public static UnityAction<PlayerController> OnATMWindowRequested { get; set; }
 
     public void Interact(Interactor _interactor, out bool _interactionSuccefull)

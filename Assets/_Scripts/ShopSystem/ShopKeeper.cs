@@ -12,7 +12,6 @@ public class ShopKeeper : MonoBehaviour, IInteractable
     public ShopSystem ShopSystem => shopSystem;
 
     public static UnityAction<ShopSystem, PlayerInventoryHolder> OnShopWindowRequested { get; set; }
-    public UnityAction<IInteractable> OnInteractionComplete { get; set; }
 
     private void Awake()
     {
@@ -38,7 +37,6 @@ public class ShopKeeper : MonoBehaviour, IInteractable
         else
         {
             _interactionSuccefull = false;
-            Debug.LogError("Player Inventory not Found");
         }
     }
 }
