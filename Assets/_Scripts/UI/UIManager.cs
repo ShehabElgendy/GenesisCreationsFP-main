@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
 
     private ATMController aTMController;
 
+    private BedInteraction bedInteraction;
+
     private void Awake()
     {
         if (instance == null)
@@ -30,6 +32,7 @@ public class UIManager : MonoBehaviour
 
         movement = FindObjectOfType<MovementController>();
         aTMController = FindObjectOfType<ATMController>();
+        bedInteraction = FindObjectOfType<BedInteraction>();
     }
 
     private void OnEnable()
@@ -47,7 +50,7 @@ public class UIManager : MonoBehaviour
     {
         movement.MovementAbility(false);
         AnimatorController.instance.FadeIn();
-        FindObjectOfType<BedInteraction>().GetComponent<BoxCollider>().enabled = false;
+        bedInteraction.GetComponent<BoxCollider>().enabled = false;
         StartCoroutine(WaitForFade());
     }
     IEnumerator WaitForFade()
@@ -57,21 +60,21 @@ public class UIManager : MonoBehaviour
         if (aTMController.Credit == 0)
             aTMController.Credit += 100;
 
-        FindObjectOfType<BedInteraction>().GetComponent<BoxCollider>().enabled = true;
+        bedInteraction.GetComponent<BoxCollider>().enabled = true;
         movement.MovementAbility(true);
     }
 
     private void DisplayATMWindow(PlayerController _player)
     {
         aTMWindow.gameObject.SetActive(!aTMWindow.activeSelf);
-        PlayerController.instance.GetComponent<MovementController>().MovementAbility(!aTMWindow.activeSelf);
+        movement.MovementAbility(!aTMWindow.activeSelf);
         LockCursor(!aTMWindow.activeSelf);
     }
 
     private void DisplayShopWindow(ShopSystem _shopSystem, PlayerInventoryHolder _playerInventory)
     {
         shopKeeperDisplay.gameObject.SetActive(!shopKeeperDisplay.gameObject.activeSelf);
-        PlayerController.instance.GetComponent<MovementController>().MovementAbility(!shopKeeperDisplay.gameObject.activeSelf);
+        movement.MovementAbility(!shopKeeperDisplay.gameObject.activeSelf);
         LockCursor(!shopKeeperDisplay.gameObject.activeSelf);
         shopKeeperDisplay.DisplayShopWindow(_shopSystem, _playerInventory);
     }
