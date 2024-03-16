@@ -41,12 +41,13 @@ public class UIManager : MonoBehaviour
         ATMInteraction.OnATMWindowRequested += DisplayATMWindow;
         BedInteraction.OnBedInteractionRequested += BedInteractionSleep;
     }
-    void Start()
+
+    private void Update()
     {
         coinsTxt.text = PlayerController.instance.Coins.ToString();
     }
 
-    private void BedInteractionSleep(PlayerController arg0)
+    private void BedInteractionSleep(PlayerController _player)
     {
         movement.MovementAbility(false);
         AnimatorController.instance.FadeIn();
@@ -85,12 +86,6 @@ public class UIManager : MonoBehaviour
         ShopKeeper.OnShopWindowRequested -= DisplayShopWindow;
         ATMInteraction.OnATMWindowRequested -= DisplayATMWindow;
         BedInteraction.OnBedInteractionRequested -= BedInteractionSleep;
-    }
-
-
-    private void Update()
-    {
-        coinsTxt.text = PlayerController.instance.Coins.ToString();
     }
 
     private void LockCursor(bool _newState)
