@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
-
     public int Coins;
 
     private int playerCoinsValue = 1000;

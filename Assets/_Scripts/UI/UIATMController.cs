@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class ATMController : MonoBehaviour
+public class UIATMController : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI creditTxt;

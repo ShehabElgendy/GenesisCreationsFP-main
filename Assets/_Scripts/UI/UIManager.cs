@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
 
     private MovementController movement;
 
-    private ATMController aTMController;
+    private UIATMController aTMController;
 
     private BedInteraction bedInteraction;
 
@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
 
         movement = FindObjectOfType<MovementController>();
-        aTMController = FindObjectOfType<ATMController>();
+        aTMController = FindObjectOfType<UIATMController>();
         bedInteraction = FindObjectOfType<BedInteraction>();
     }
 
