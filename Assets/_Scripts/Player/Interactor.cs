@@ -29,8 +29,5 @@ public class Interactor : MonoBehaviour
         }
     }
 
-    private void StartInteraction(IInteractable _interactables)
-    {
-        _interactables.Interact(this, out bool _interactSuccessful);
-    }
+    private void StartInteraction(IInteractable _interactables) => _interactables.Interact(this, out bool _interactSuccessful);
 }

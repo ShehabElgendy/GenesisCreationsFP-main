@@ -13,11 +13,8 @@ public class UIStaticInventoryDisplay : UIInventoryDisplay
     {
         var _component = FindObjectOfType<PlayerInventoryHolder>();
         Destroy(_component);
-
         var _invHolder = GameObject.Find(GameStatics.PlayeTag).AddComponent<PlayerInventoryHolder>();
-
         inventoryHolder = _invHolder;
-
 
         if (inventoryHolder != null)
         {
@@ -30,10 +27,7 @@ public class UIStaticInventoryDisplay : UIInventoryDisplay
         AssignSlots(inventorySystem);
     }
 
-    protected override void Start()
-    {
-        base.Start();
-    }
+    protected override void Start() => base.Start();
 
     public override void AssignSlots(InventorySystem _invToDisplay)
     {

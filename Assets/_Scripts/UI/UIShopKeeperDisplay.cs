@@ -66,7 +66,6 @@ public class UIShopKeeperDisplay : MonoBehaviour
     public void DisplayShopWindow(ShopSystem _shopSystem, PlayerInventoryHolder _inventoryHolder)
     {
         shopSystem = _shopSystem;
-
         playerInventoryHolder = _inventoryHolder;
 
         RefreshDisplay();
@@ -115,14 +114,10 @@ public class UIShopKeeperDisplay : MonoBehaviour
         }
 
         SpendCoins(PlayerController.instance.Coins);
-
         RefreshDisplay();
     }
 
-    private void SpendCoins(int _value)
-    {
-        _value = PlayerController.instance.Coins -= basketTotal;
-    }
+    private void SpendCoins(int _value) => _value = PlayerController.instance.Coins -= basketTotal;
 
     private void SellItems()
     {

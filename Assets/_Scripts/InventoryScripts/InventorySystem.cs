@@ -93,10 +93,7 @@ public class InventorySystem
         return _distinctItems;
     }
 
-    internal void AddCoinsFromShop(int _price)
-    {
-        PlayerController.instance.Coins += _price;
-    }
+    internal void AddCoinsFromShop(int _price) => PlayerController.instance.Coins += _price;
 
     internal void RemoveItemsFromInventory(InventoryItemData _data, int _amount)
     {

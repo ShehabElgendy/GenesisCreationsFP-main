@@ -20,14 +20,10 @@ public class UIATMController : MonoBehaviour
     private void Start()
     {
         Credit = creditValue;
-
         creditTxt.text = Credit.ToString();
     }
 
-    private void Update()
-    {
-        creditTxt.text = Credit.ToString();
-    }
+    private void Update() => creditTxt.text = Credit.ToString();
 
     public void Deposit()
     {
@@ -58,7 +54,6 @@ public class UIATMController : MonoBehaviour
             int _remainingCredit = Credit;
             Credit -= _remainingCredit;
             PlayerController.instance.Coins += _remainingCredit;
-
         }
     }
 }

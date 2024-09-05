@@ -42,10 +42,14 @@ public class UIManager : MonoBehaviour
         BedInteraction.OnBedInteractionRequested += BedInteractionSleep;
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        coinsTxt.text = PlayerController.instance.Coins.ToString();
+        ShopKeeper.OnShopWindowRequested -= DisplayShopWindow;
+        ATMInteraction.OnATMWindowRequested -= DisplayATMWindow;
+        BedInteraction.OnBedInteractionRequested -= BedInteractionSleep;
     }
+
+    private void Update() => coinsTxt.text = PlayerController.instance.Coins.ToString();
 
     private void BedInteractionSleep(PlayerController _player)
     {
@@ -80,25 +84,9 @@ public class UIManager : MonoBehaviour
         shopKeeperDisplay.DisplayShopWindow(_shopSystem, _playerInventory);
     }
 
-
-    private void OnDisable()
+    private void LockCursor(bool lockCursor)
     {
-        ShopKeeper.OnShopWindowRequested -= DisplayShopWindow;
-        ATMInteraction.OnATMWindowRequested -= DisplayATMWindow;
-        BedInteraction.OnBedInteractionRequested -= BedInteractionSleep;
-    }
-
-    private void LockCursor(bool _newState)
-    {
-        if (_newState)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-        }
+        Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.Confined;
+        Cursor.visible = !lockCursor;
     }
 }

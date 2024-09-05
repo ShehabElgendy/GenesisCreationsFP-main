@@ -13,8 +13,5 @@ public class InventoryHolder : MonoBehaviour
     protected InventorySystem playerInventorySystem;
     public InventorySystem PlayerInventorySystem => playerInventorySystem;
 
-    protected virtual void Awake()
-    {
-        playerInventorySystem = new InventorySystem(inventorySize);
-    }
+    protected virtual void Awake() => playerInventorySystem = new InventorySystem(inventorySize);
 }

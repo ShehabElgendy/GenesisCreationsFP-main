@@ -24,21 +24,6 @@ public abstract class ItemSlot
         stackSize = -1;
     }
 
-    public void AssignItem(InventorySlot _invSlot)
-    {
-        if(itemData == _invSlot.itemData)
-        {
-            AddToStack(_invSlot.stackSize);
-        }
-        else
-        {
-            itemData = _invSlot.itemData;
-            itemID = itemData.ID;
-            stackSize = 0;
-            AddToStack(_invSlot.stackSize);
-        }
-    }
-
     public void AssignItem(InventoryItemData _data, int _amount)
     {
         if (itemData == _data)

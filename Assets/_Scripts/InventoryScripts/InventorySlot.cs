@@ -9,10 +9,7 @@ public class InventorySlot : ItemSlot
         stackSize = _amount;
     }
 
-    public InventorySlot()
-    {
-        ClearSlot();
-    }
+    public InventorySlot() => ClearSlot();
 
 
     public bool EnoughRoomLeftInStack(int _amountToAdd, out int _amountRemaining)

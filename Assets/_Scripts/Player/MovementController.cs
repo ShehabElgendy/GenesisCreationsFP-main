@@ -29,10 +29,7 @@ public class MovementController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void Update()
-    {
-        HandleMovement();
-    }
+    void Update() => HandleMovement();
 
     private void HandleMovement()
     {
@@ -47,10 +44,7 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        Movement();
-    }
+    private void FixedUpdate() => Movement();
 
     private void Movement()
     {
@@ -64,11 +58,5 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    public bool MovementAbility(bool _canMove)
-    {
-        canMove = _canMove;
-        characterController.enabled = canMove;
-
-        return _canMove;
-    }
+    public void MovementAbility(bool _canMove) => canMove = _canMove;
 }

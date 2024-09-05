@@ -10,8 +10,5 @@ public class UIShoppingCartItem : MonoBehaviour
     private TextMeshProUGUI itemText;
 
 
-    internal void SetItemText(string _newString)
-    {
-        itemText.text = _newString;
-    }
+    internal void SetItemText(string _newString) => itemText.text = _newString;
 }

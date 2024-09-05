@@ -14,10 +14,7 @@ public class ShopSystem
     public List<ShopSlot> ShopInventory => shopInventory;
 
 
-    public ShopSystem(int _size)
-    {
-        SetShopSize(_size);
-    }
+    public ShopSystem(int _size) => SetShopSize(_size);
 
     private void SetShopSize(int _size)
     {

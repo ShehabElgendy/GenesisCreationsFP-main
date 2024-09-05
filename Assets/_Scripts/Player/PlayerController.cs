@@ -19,9 +19,6 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void Start()
-    {
-        Coins = playerCoinsValue;
-    }
+    private void Start() => Coins = playerCoinsValue;
 
 }

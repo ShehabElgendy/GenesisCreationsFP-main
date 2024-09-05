@@ -12,10 +12,7 @@ public abstract class UIInventoryDisplay : MonoBehaviour
     public InventorySystem InventorySystem => inventorySystem;
     public Dictionary<UIInventorySlot, InventorySlot> SlotDictionary => slotDictionary;
 
-    protected virtual void Start()
-    {
-
-    }
+    protected virtual void Start() { }
 
     public abstract void AssignSlots(InventorySystem _invToDisplay);
 

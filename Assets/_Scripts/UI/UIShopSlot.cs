@@ -73,7 +73,6 @@ public class UIShopSlot : MonoBehaviour
     private void RemoveItemFromCart()
     {
         if(tempAmount == assignedItemSlot.StackSize) return;
-
         tempAmount++;
         parentDisplay.RemoveItemfromCart(this);
         itemCount.text = tempAmount.ToString();
@@ -82,10 +81,8 @@ public class UIShopSlot : MonoBehaviour
     private void AddItemToCart()
     {
         if (tempAmount <= 0) return;
-
         tempAmount--;
         parentDisplay.AddItemToCart(this);
         itemCount.text = tempAmount.ToString();
-
     }
 }

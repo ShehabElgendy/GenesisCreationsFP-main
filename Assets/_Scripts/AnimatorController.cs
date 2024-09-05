@@ -6,7 +6,6 @@ public class AnimatorController : MonoBehaviour
 {
     public static AnimatorController instance;
 
-
     private Animator anim;
 
     private void Awake()
@@ -19,13 +18,7 @@ public class AnimatorController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void FadeIn()
-    {
-        anim.SetBool(GameStatics.FadeScreen, true);
-    }
+    public void FadeIn() => anim.SetBool(GameStatics.FadeScreen, true);
 
-    public void FadeOut()
-    {
-        anim.SetBool(GameStatics.FadeScreen, false);
-    }
+    public void FadeOut() => anim.SetBool(GameStatics.FadeScreen, false);
 }
