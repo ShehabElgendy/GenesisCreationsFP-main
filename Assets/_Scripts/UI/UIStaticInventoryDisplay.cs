@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder (1000)]
 public class UIStaticInventoryDisplay : UIInventoryDisplay
 {
     [SerializeField]
@@ -11,11 +12,6 @@ public class UIStaticInventoryDisplay : UIInventoryDisplay
 
     private void Awake()
     {
-        var _component = FindObjectOfType<PlayerInventoryHolder>();
-        Destroy(_component);
-        var _invHolder = GameObject.Find(GameStatics.PlayeTag).AddComponent<PlayerInventoryHolder>();
-        inventoryHolder = _invHolder;
-
         if (inventoryHolder != null)
         {
             inventorySystem = inventoryHolder.PlayerInventorySystem;
